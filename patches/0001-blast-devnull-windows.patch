@@ -1,0 +1,14 @@
+diff --git a/tcrdock/blast.py b/tcrdock/blast.py
+index ed783ee..e9c6a26 100644
+--- a/tcrdock/blast.py
++++ b/tcrdock/blast.py
+@@ -52,7 +52,8 @@ def blast_file_and_read_hits(
+            f' -num_alignments {num_alignments} -out {outfile}')
+ 
+     if not verbose:
+-        cmd += ' 2> /dev/null'
++        import os as _os
++        cmd += f' 2> {_os.devnull}'  # local patch: '/dev/null' is not valid on Windows
+ 
+     if verbose:
+         print(cmd)

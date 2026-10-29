@@ -1,0 +1,85 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Main uv environment
+.venv/
+
+# Extra isolated environments
+envs/
+
+# External cloned repositories
+# NOTE: local modifications live in patches/ - see README
+external/
+
+# Raw competition data
+data/raw/
+
+# Heavy structure outputs
+outputs/structures/
+
+# Model checkpoints (regenerable)
+outputs/models/
+*.pt
+*.pth
+*.ckpt
+
+# Structure files are always large and regenerable here.
+# Safety net in case they are ever written outside outputs/structures/.
+*.pdb
+*.cif
+
+# Downloaded archives (e.g. the BLAST tarball)
+*.tar.gz
+*.zip
+
+# Kaggle submissions
+submission*.csv
+
+# Temp files TCRdock writes into the working directory
+tmp_fasta_*.fasta
+*.blast
+
+# BLAST database artefacts
+*.phr
+*.pin
+*.psq
+
+# Credentials - never commit.
+# Named explicitly rather than with a *token*/*secret* wildcard, which would
+# silently swallow legitimate ML files such as tokenizer.py.
+.env
+.env.*
+!.env.example
+kaggle.json
+.kaggle/
+credentials.json
+client_secret*.json
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Editor / OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Machine-local agent settings (keep .claude/settings.json shareable)
+.claude/settings.local.json
+
+# Tooling caches
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Deliberately TRACKED (do not add):
+#   uv.lock                            - pins the EBM environment
+#   data/tcrdock_pilot.tsv             - defines which rows the pilot used
+#   outputs/structural_features/       - the structural-feature cache; lets the
+#                                        EBM retrain without re-running TCRDock
+#   patches/                           - local fixes to the TCRdock clone
